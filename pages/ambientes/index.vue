@@ -1,19 +1,15 @@
 <script setup>
-// função useFetch vai chamar o backend como se fosse no Insomnia
     const { data: allAmbientes } = await useFetch('http://localhost:8000/ambientes',{
       key: 'ambienteRequest' 
     });
     let showForm = false;
     const setShowForm = () => {
-        //alert("Cliquei no botão!")
         showForm = true;
         refreshNuxtData()
     }   
 
-    //criando as variáveis que vão armazenar os dados do formulario html
     let name;
 
-     //função chamada quando o usuario clicar para enviar o formulario
 
      const saveAmbiente = async() => {
         //imprimindo no console do navegador APENAS PARA TESTE
@@ -22,15 +18,15 @@
         await useFetch('http://localhost:8000/ambientes/',{
             method: 'POST',
         body:
-        {
+        [{
 
-		nome: name  
+		    nome: name  
               
-        }, key:'ambienteSave'
+        }], key:'ambienteSave'
        
         
          });
-         alert("ambiente saved")
+         alert("ambiente novo adicionado com sucesso");
      }
 
 
@@ -53,7 +49,6 @@
    
    <button @click="setShowForm">SIM</button>
 
-    <!-- Elemento para exibir a descrição -->
     <section v-if="showForm === true">
         <br>
         <label for="">nome do ambiente: </label> <input type="text" v-model="name"> <br><br>
@@ -64,7 +59,6 @@
     <br>
     <br>
     
-    <!-- <h2 v-if="detalhe !== ''" @click="realizarAcao">Login</h2> -->
     
     
         <hr>

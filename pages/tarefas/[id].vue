@@ -19,7 +19,7 @@
 <template>
     <div>
       <h1>
-        Welcome to the tarefa {{ tarefaFound.data.nome}}</h1>
+        Tarefa: {{ tarefaFound.data.nome}}</h1>
         <br>
         <section>
             <h3>Status: {{ tarefaFound.data.idStatusFK.nome }}</h3>
@@ -34,31 +34,27 @@
             <img :src="tarefaFound.data.idSolicitanteFK.image" alt="Imagem do solicitante">
             <p>Imagem do solicitante: {{ tarefaFound.data.idSolicitanteFK.nome }}</p>
 
-            <h3>Histórico</h3>
 
             <section v-for="stts in sttsFound.data" :key="stts.id"> 
                
               <h4 v-if="stts.idTarefaFK == paramsID">Nome: {{ stts.idStatusFK.nome }} / Data: {{ stts.data }} / Descrição: {{ stts.descricao }}</h4>
             </section>
-            <!-- <h4 v-for="stts in sttsFound.data.idTarefaFK == paramsID" :key="stts.id">  / Data: {{ stts.data.data }} / Descrição: {{ stts.data.descricao }}</h4> -->
            
         </section>
         <br>
-        <label for="detalhes">Mostrar detalhes </label>
+        <label for="detalhes">Exibir detalhes? </label>
    
-   <button @click="exibirDescricao">Mostrar</button>
+   <button @click="exibirDescricao">Exibir</button>
 
-    <!-- Elemento para exibir a descrição -->
     <p v-if="mostrar">Detalhes da tarefa</p>
 
     <br>
     <br>
     
-    <!-- <h2 v-if="detalhe !== ''" @click="realizarAcao">Login</h2> -->
     
     <br>
         <NuxtLink :to="`/tarefas`">
-                <button>Voltar para tarefas</button>
+                <button>Voltar a lista de tarefas</button>
             </NuxtLink>
         <br>
         <hr>
@@ -71,12 +67,11 @@
 export default {
   data() {
     return {
-      mostrar: false // Variável para controlar a exibição da descrição
+      mostrar: false 
     };
   },
   methods: {
     exibirDescricao() {
-      // Função para mostrar a descrição
       this.mostrar = true;
     }
   }

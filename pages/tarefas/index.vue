@@ -12,7 +12,7 @@
 
 <template>
     <div>
-        <h1>Bem vindo as nossas tarefas</h1>
+        <h1>Bem vindo a lista de tarefas</h1>
         <section v-for="tarefa in alltarefas.data" :key="tarefa.id">
             
             <h3>Nome: {{ tarefa.nome }}</h3>
@@ -25,14 +25,6 @@
             <br>
             <hr>
             <br>
-
-            
-            <!-- <img :src="'http://localhost:8000' + tarefa.foto" alt="foto tarefa"> -->
-            <!-- <NuxtLink :to="'/trips/' + image.tripFk"></NuxtLink> -->
-
-            <!-- <NuxtLink :to="`/tarefas/${tarefa.id}`">
-                <img :src="'http://localhost:8000' + tarefa.foto" alt="foto tarefa">
-            </NuxtLink> -->
         </section>
         <br><hr>
     </div>
